@@ -94,13 +94,13 @@ const LoginPage: React.FC = () => {
             </Button>
           </form>
 
-          <div className="mt-6 pt-4 border-t border-border/50">
+          {/* <div className="mt-6 pt-4 border-t border-border/50">
             <p className="text-xs text-muted-foreground font-mono text-center">
               Demo: <span className="text-primary">admin</span> / <span className="text-primary">admin123</span> (Admin)
               <br />
               Demo: <span className="text-primary">user</span> / <span className="text-primary">user123</span> (User)
             </p>
-          </div>
+          </div> */}
         </div>
       </motion.div>
     </div>
