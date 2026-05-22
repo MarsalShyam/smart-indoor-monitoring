@@ -2,8 +2,8 @@ import { User, Device, FloorPlan, AccessPoint, Zone, ActivityLogEntry, Fingerpri
 
 // ===== Users =====
 export const mockUsers: (User & { password: string })[] = [
-  { id: 'u1', username: 'admin', password: 'admin123', name: 'Dr. Sarah Chen', role: 'admin', email: 'sarah.chen@hospital.org' },
-  { id: 'u2', username: 'user', password: 'user123', name: 'James Wilson', role: 'user', email: 'james.wilson@hospital.org' },
+  { id: 'u1', username: 'admin', password: 'admin123', name: 'Mr. Sawej Alam', role: 'admin', email: 'sawejmanager.org' },
+  { id: 'u2', username: 'user', password: 'user123', name: 'Shyam Kumar', role: 'user', email: 'shyam@customer.org' },
 ];
 
 // ===== Zones per floor =====
@@ -53,33 +53,396 @@ export const mockFloorPlans: FloorPlan[] = [
 const now = new Date().toISOString();
 
 export const mockDevices: Device[] = [
-  { id: 'd1', name: 'Dr. Chen Badge', type: 'staff', status: 'active', battery: 85, assignedTo: 'u1', lastSeen: now, currentPosition: { x: 120, y: 100, zone: 'Reception', timestamp: now }, floor: 1 },
-  { id: 'd2', name: 'Dr. Patel Badge', type: 'staff', status: 'active', battery: 72, lastSeen: now, currentPosition: { x: 350, y: 100, zone: 'Emergency Room', timestamp: now }, floor: 1 },
-  { id: 'd3', name: 'Nurse Kim Badge', type: 'staff', status: 'active', battery: 90, lastSeen: now, currentPosition: { x: 100, y: 100, zone: 'ICU', timestamp: now }, floor: 2 },
-  { id: 'd4', name: 'Patient A Wristband', type: 'patient', status: 'active', battery: 65, lastSeen: now, currentPosition: { x: 400, y: 120, zone: 'Emergency Room', timestamp: now }, floor: 1 },
-  { id: 'd5', name: 'Patient B Wristband', type: 'patient', status: 'active', battery: 45, lastSeen: now, currentPosition: { x: 150, y: 350, zone: 'Recovery Room', timestamp: now }, floor: 2 },
-  { id: 'd6', name: 'Patient C Wristband', type: 'patient', status: 'idle', battery: 30, lastSeen: now, currentPosition: { x: 200, y: 140, zone: 'ICU', timestamp: now }, floor: 2 },
-  { id: 'd7', name: 'Ventilator Unit 1', type: 'equipment', status: 'active', battery: 100, lastSeen: now, currentPosition: { x: 250, y: 120, zone: 'ICU', timestamp: now }, floor: 2 },
-  { id: 'd8', name: 'Defibrillator Cart', type: 'equipment', status: 'active', battery: 95, lastSeen: now, currentPosition: { x: 500, y: 100, zone: 'Surgery Wing', timestamp: now }, floor: 2 },
-  { id: 'd9', name: 'Wheelchair #3', type: 'equipment', status: 'idle', battery: 80, lastSeen: now, currentPosition: { x: 100, y: 260, zone: 'Main Lobby', timestamp: now }, floor: 1 },
-  { id: 'd10', name: 'Dr. Rodriguez Badge', type: 'staff', status: 'active', battery: 55, lastSeen: now, currentPosition: { x: 650, y: 100, zone: 'Pharmacy', timestamp: now }, floor: 1 },
-  { id: 'd11', name: 'Patient D Wristband', type: 'patient', status: 'active', battery: 70, lastSeen: now, currentPosition: { x: 650, y: 300, zone: 'Radiology', timestamp: now }, floor: 1 },
-  { id: 'd12', name: 'Nurse Lopez Badge', type: 'staff', status: 'active', battery: 88, lastSeen: now, currentPosition: { x: 500, y: 120, zone: 'Surgery Wing', timestamp: now }, floor: 2 },
-  { id: 'd13', name: 'IV Pump #7', type: 'equipment', status: 'active', battery: 60, lastSeen: now, currentPosition: { x: 380, y: 350, zone: 'Lab', timestamp: now }, floor: 2 },
-  { id: 'd14', name: 'Patient E Wristband', type: 'patient', status: 'offline', battery: 5, lastSeen: now, currentPosition: { x: 350, y: 350, zone: 'Cafeteria', timestamp: now }, floor: 1 },
-  { id: 'd15', name: 'Portable X-Ray', type: 'equipment', status: 'active', battery: 75, lastSeen: now, currentPosition: { x: 700, y: 300, zone: 'Radiology', timestamp: now }, floor: 1 },
+  {
+    id: 'd1',
+    name: 'Dr. Arjun Reddy Badge',
+    type: 'staff',
+    status: 'active',
+    battery: 85,
+    assignedTo: 'u1',
+    lastSeen: now,
+    currentPosition: {
+      x: 120,
+      y: 100,
+      zone: 'Reception',
+      timestamp: now
+    },
+    floor: 1
+  },
+
+  {
+    id: 'd2',
+    name: 'Dr. Priya Sharma Badge',
+    type: 'staff',
+    status: 'active',
+    battery: 72,
+    lastSeen: now,
+    currentPosition: {
+      x: 350,
+      y: 100,
+      zone: 'Emergency Room',
+      timestamp: now
+    },
+    floor: 1
+  },
+
+  {
+    id: 'd3',
+    name: 'Nurse Kavya Iyer Badge',
+    type: 'staff',
+    status: 'active',
+    battery: 90,
+    lastSeen: now,
+    currentPosition: {
+      x: 100,
+      y: 100,
+      zone: 'ICU',
+      timestamp: now
+    },
+    floor: 2
+  },
+
+  {
+    id: 'd4',
+    name: 'Rahul Verma Wristband',
+    type: 'patient',
+    status: 'active',
+    battery: 65,
+    lastSeen: now,
+    currentPosition: {
+      x: 400,
+      y: 120,
+      zone: 'Emergency Room',
+      timestamp: now
+    },
+    floor: 1
+  },
+
+  {
+    id: 'd5',
+    name: 'Ananya Nair Wristband',
+    type: 'patient',
+    status: 'active',
+    battery: 45,
+    lastSeen: now,
+    currentPosition: {
+      x: 150,
+      y: 350,
+      zone: 'Recovery Room',
+      timestamp: now
+    },
+    floor: 2
+  },
+
+  {
+    id: 'd6',
+    name: 'Vikram Singh Wristband',
+    type: 'patient',
+    status: 'idle',
+    battery: 30,
+    lastSeen: now,
+    currentPosition: {
+      x: 200,
+      y: 140,
+      zone: 'ICU',
+      timestamp: now
+    },
+    floor: 2
+  },
+
+  {
+    id: 'd7',
+    name: 'Ventilator Unit Alpha',
+    type: 'equipment',
+    status: 'active',
+    battery: 100,
+    lastSeen: now,
+    currentPosition: {
+      x: 250,
+      y: 120,
+      zone: 'ICU',
+      timestamp: now
+    },
+    floor: 2
+  },
+
+  {
+    id: 'd8',
+    name: 'Defibrillator Cart Delta',
+    type: 'equipment',
+    status: 'active',
+    battery: 95,
+    lastSeen: now,
+    currentPosition: {
+      x: 500,
+      y: 100,
+      zone: 'Surgery Wing',
+      timestamp: now
+    },
+    floor: 2
+  },
+
+  {
+    id: 'd9',
+    name: 'Wheelchair Unit 03',
+    type: 'equipment',
+    status: 'idle',
+    battery: 80,
+    lastSeen: now,
+    currentPosition: {
+      x: 100,
+      y: 260,
+      zone: 'Main Lobby',
+      timestamp: now
+    },
+    floor: 1
+  },
+
+  {
+    id: 'd10',
+    name: 'Dr. Suresh Menon Badge',
+    type: 'staff',
+    status: 'active',
+    battery: 55,
+    lastSeen: now,
+    currentPosition: {
+      x: 650,
+      y: 100,
+      zone: 'Pharmacy',
+      timestamp: now
+    },
+    floor: 1
+  },
+
+  {
+    id: 'd11',
+    name: 'Meera Krishnan Wristband',
+    type: 'patient',
+    status: 'active',
+    battery: 70,
+    lastSeen: now,
+    currentPosition: {
+      x: 650,
+      y: 300,
+      zone: 'Radiology',
+      timestamp: now
+    },
+    floor: 1
+  },
+
+  {
+    id: 'd12',
+    name: 'Nurse Lakshmi Pillai Badge',
+    type: 'staff',
+    status: 'active',
+    battery: 88,
+    lastSeen: now,
+    currentPosition: {
+      x: 500,
+      y: 120,
+      zone: 'Surgery Wing',
+      timestamp: now
+    },
+    floor: 2
+  },
+
+  {
+    id: 'd13',
+    name: 'IV Pump Unit 07',
+    type: 'equipment',
+    status: 'active',
+    battery: 60,
+    lastSeen: now,
+    currentPosition: {
+      x: 380,
+      y: 350,
+      zone: 'Lab',
+      timestamp: now
+    },
+    floor: 2
+  },
+
+  {
+    id: 'd14',
+    name: 'Karthik Subramanian Wristband',
+    type: 'patient',
+    status: 'offline',
+    battery: 5,
+    lastSeen: now,
+    currentPosition: {
+      x: 350,
+      y: 350,
+      zone: 'Cafeteria',
+      timestamp: now
+    },
+    floor: 1
+  },
+
+  {
+    id: 'd15',
+    name: 'Portable X-Ray Scanner',
+    type: 'equipment',
+    status: 'active',
+    battery: 75,
+    lastSeen: now,
+    currentPosition: {
+      x: 700,
+      y: 300,
+      zone: 'Radiology',
+      timestamp: now
+    },
+    floor: 1
+  }
 ];
 
 // ===== Activity Log =====
 export const mockActivityLog: ActivityLogEntry[] = [
-  { id: 'a1', deviceId: 'd1', deviceName: 'Dr. Chen Badge', type: 'zone_enter', message: 'Entered Reception', timestamp: new Date(Date.now() - 60000).toISOString(), zone: 'Reception' },
-  { id: 'a2', deviceId: 'd4', deviceName: 'Patient A Wristband', type: 'zone_enter', message: 'Entered Emergency Room', timestamp: new Date(Date.now() - 120000).toISOString(), zone: 'Emergency Room' },
-  { id: 'a3', deviceId: 'd7', deviceName: 'Ventilator Unit 1', type: 'status_change', message: 'Status changed to active', timestamp: new Date(Date.now() - 180000).toISOString() },
-  { id: 'a4', deviceId: 'd14', deviceName: 'Patient E Wristband', type: 'alert', message: 'Battery critically low (5%)', timestamp: new Date(Date.now() - 240000).toISOString() },
-  { id: 'a5', deviceId: 'd3', deviceName: 'Nurse Kim Badge', type: 'zone_exit', message: 'Exited ICU', timestamp: new Date(Date.now() - 300000).toISOString(), zone: 'ICU' },
-  { id: 'a6', deviceId: 'd8', deviceName: 'Defibrillator Cart', type: 'zone_enter', message: 'Entered Surgery Wing', timestamp: new Date(Date.now() - 360000).toISOString(), zone: 'Surgery Wing' },
-  { id: 'a7', deviceId: 'd2', deviceName: 'Dr. Patel Badge', type: 'zone_enter', message: 'Entered Emergency Room', timestamp: new Date(Date.now() - 420000).toISOString(), zone: 'Emergency Room' },
-  { id: 'a8', deviceId: 'd11', deviceName: 'Patient D Wristband', type: 'zone_enter', message: 'Entered Radiology', timestamp: new Date(Date.now() - 480000).toISOString(), zone: 'Radiology' },
+  {
+    id: 'a1',
+    deviceId: 'd1',
+    deviceName: 'Dr. Arjun Reddy Badge',
+    type: 'zone_enter',
+    message: 'Entered Reception',
+    timestamp: new Date(Date.now() - 60000).toISOString(),
+    zone: 'Reception'
+  },
+
+  {
+    id: 'a2',
+    deviceId: 'd4',
+    deviceName: 'Rahul Verma Wristband',
+    type: 'zone_enter',
+    message: 'Entered Emergency Room',
+    timestamp: new Date(Date.now() - 120000).toISOString(),
+    zone: 'Emergency Room'
+  },
+
+  {
+    id: 'a3',
+    deviceId: 'd7',
+    deviceName: 'Ventilator Unit Alpha',
+    type: 'status_change',
+    message: 'Status changed to active',
+    timestamp: new Date(Date.now() - 180000).toISOString()
+  },
+
+  {
+    id: 'a4',
+    deviceId: 'd14',
+    deviceName: 'Karthik Subramanian Wristband',
+    type: 'alert',
+    message: 'Battery critically low (5%)',
+    timestamp: new Date(Date.now() - 240000).toISOString()
+  },
+
+  {
+    id: 'a5',
+    deviceId: 'd3',
+    deviceName: 'Nurse Kavya Iyer Badge',
+    type: 'zone_exit',
+    message: 'Exited ICU',
+    timestamp: new Date(Date.now() - 300000).toISOString(),
+    zone: 'ICU'
+  },
+
+  {
+    id: 'a6',
+    deviceId: 'd8',
+    deviceName: 'Defibrillator Cart Delta',
+    type: 'zone_enter',
+    message: 'Entered Surgery Wing',
+    timestamp: new Date(Date.now() - 360000).toISOString(),
+    zone: 'Surgery Wing'
+  },
+
+  {
+    id: 'a7',
+    deviceId: 'd2',
+    deviceName: 'Dr. Priya Sharma Badge',
+    type: 'zone_enter',
+    message: 'Entered Emergency Room',
+    timestamp: new Date(Date.now() - 420000).toISOString(),
+    zone: 'Emergency Room'
+  },
+
+  {
+    id: 'a8',
+    deviceId: 'd11',
+    deviceName: 'Meera Krishnan Wristband',
+    type: 'zone_enter',
+    message: 'Entered Radiology',
+    timestamp: new Date(Date.now() - 480000).toISOString(),
+    zone: 'Radiology'
+  },
+
+  {
+    id: 'a9',
+    deviceId: 'd5',
+    deviceName: 'Ananya Nair Wristband',
+    type: 'zone_enter',
+    message: 'Entered Recovery Room',
+    timestamp: new Date(Date.now() - 540000).toISOString(),
+    zone: 'Recovery Room'
+  },
+
+  {
+    id: 'a10',
+    deviceId: 'd10',
+    deviceName: 'Dr. Suresh Menon Badge',
+    type: 'zone_enter',
+    message: 'Entered Pharmacy',
+    timestamp: new Date(Date.now() - 600000).toISOString(),
+    zone: 'Pharmacy'
+  },
+
+  {
+    id: 'a11',
+    deviceId: 'd12',
+    deviceName: 'Nurse Lakshmi Pillai Badge',
+    type: 'zone_enter',
+    message: 'Entered Surgery Wing',
+    timestamp: new Date(Date.now() - 660000).toISOString(),
+    zone: 'Surgery Wing'
+  },
+
+  {
+    id: 'a12',
+    deviceId: 'd6',
+    deviceName: 'Vikram Singh Wristband',
+    type: 'status_change',
+    message: 'Status changed to idle',
+    timestamp: new Date(Date.now() - 720000).toISOString()
+  },
+
+  {
+    id: 'a13',
+    deviceId: 'd13',
+    deviceName: 'IV Pump Unit 07',
+    type: 'zone_enter',
+    message: 'Entered Lab',
+    timestamp: new Date(Date.now() - 780000).toISOString(),
+    zone: 'Lab'
+  },
+
+  {
+    id: 'a14',
+    deviceId: 'd9',
+    deviceName: 'Wheelchair Unit 03',
+    type: 'zone_exit',
+    message: 'Exited Main Lobby',
+    timestamp: new Date(Date.now() - 840000).toISOString(),
+    zone: 'Main Lobby'
+  },
+
+  {
+    id: 'a15',
+    deviceId: 'd15',
+    deviceName: 'Portable X-Ray Scanner',
+    type: 'zone_enter',
+    message: 'Entered Radiology',
+    timestamp: new Date(Date.now() - 900000).toISOString(),
+    zone: 'Radiology'
+  }
 ];
 
 // ===== Fingerprint Dataset =====
